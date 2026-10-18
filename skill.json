@@ -1,0 +1,44 @@
+{
+  "name": "genpark-agentic-commerce-dynamic-escrow-milestone-releaser-skill",
+  "version": "1.0.0",
+  "description": "Autonomous Agentic Commerce Digital Escrow Milestone Payout Arbiter. Ingests contractual milestone criteria (git PR merge, unit test pass rate >= 90%, lighthouse performance >= 85), verifies cryptographic acceptance proofs, and releases escrow funds.",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.llinkedin.com/company/92955550",
+  "tools": [
+    {
+      "name": "evaluate_milestone_and_release",
+      "description": "Evaluate digital contract milestone criteria and release escrow funds on verified completion.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "contract_id": {
+            "type": "string",
+            "description": "Escrow agreement identifier."
+          },
+          "milestone_index": {
+            "type": "integer",
+            "description": "Milestone phase number."
+          },
+          "allocated_escrow_usd": {
+            "type": "number",
+            "description": "Amount locked in escrow for this milestone."
+          },
+          "acceptance_criteria": {
+            "type": "object",
+            "description": "Required test_pass_rate, pr_merged (bool), client_signoff (bool)."
+          },
+          "delivery_telemetry": {
+            "type": "object",
+            "description": "Observed test_pass_rate, pr_merged (bool), commit_sha."
+          }
+        },
+        "required": [
+          "contract_id",
+          "allocated_escrow_usd",
+          "acceptance_criteria",
+          "delivery_telemetry"
+        ]
+      }
+    }
+  ]
+}
